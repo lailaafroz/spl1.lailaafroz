@@ -11,14 +11,13 @@
 #include <arpa/inet.h>
 #include<stdlib.h>
 #include<netdb.h>
-#include<fstream>
-  
+
 using namespace std;   
 
 int main()
 {   
       int client,server;
-      int portNum = 300;    
+      int portNum = 3001;
       bool isExit = true;
       int bufSize = 100;
       char buffer[bufSize];
@@ -56,30 +55,15 @@ int main()
       cout << "conection confirmed" << endl;
       cout << "you can connect server" << endl;
       cout << "send msg to server" << endl;
-     char ch;
-     int i =0;
-      do{
-            ifstream iFile;
-            iFile.open("firstFile.txt",ios::in);          
-            iFile >> ch;
-            while(i!=100)
-            {
-                 buffer[i]=ch;
-                 i++; 
-                 iFile >> ch;
-            }
-           // while(true){
-            //strcpy(str,);              
-                send(client,buffer,bufSize,0);
-                //if(*buffer!=EOF)  break;
-                //iFile >> buffer;
-                //if()
-           // }                  
+      do{  
+             cin >> buffer ;
+               send(client,buffer,bufSize,0);
+            
                  recv(client,buffer,bufSize,0);
                   cout<< buffer << endl;
                    if(*buffer=='B'){
                     isExit=false;
-                   }     
+                   }
       }while(isExit);
 
       cout << "connection terminated" << endl;
