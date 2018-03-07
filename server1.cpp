@@ -10,15 +10,14 @@
 #include<netinet/in.h>
 #include<arpa/inet.h>
 #include<stdlib.h>
-#include<fstream>
-     
+   
 using namespace std;
 
-int main()     
+int main()   
 {
       int client,server;
 
-      int portNum = 3000;
+      int portNum = 3001;
       bool isExit = false;
       int bufSize = 100;
       char buffer[bufSize];
@@ -60,7 +59,7 @@ int main()
         exit(1);
       }
            
-      if(server>0)  
+      if(server>0)
       {   
             strcpy(buffer,"server connected ....../n");
             send(server,buffer,bufSize,0);
@@ -68,20 +67,13 @@ int main()
             cout<< "connected with client" << endl;
             cout<< "you can communicate now" << endl;
       }
-      
-      //string str;   
+  
       do{
-            ofstream oFile;
-            oFile.open("flower2.jpg",ios::binary);
-            do{  
-                recv(server,buffer,bufSize,0); 
-                  oFile << *buffer;    
-                 cout<< buffer << endl;                  
-            }while(*buffer!=EOF);
-            
-              if(*buffer=='B'){
-               exit(1);
-                isExit =false;
+          recv(server,buffer,bufSize,0);    
+            cout<< buffer << endl;
+             if(*buffer=='B'){
+              exit(1);
+               isExit =false;
               }
           cin >> buffer;
           send(server,buffer,bufSize,0);        
