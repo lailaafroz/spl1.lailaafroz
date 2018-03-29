@@ -50,7 +50,7 @@ int main()
       {
            // cout  <<  "connecting to server...." << endl;
       }
-      recv(client,buffer,bufSize,0);
+      //recv(client,buffer,bufSize,0);
       cout << buffer << endl;
       cout << "conection confirmed" << endl;
       cout << "you can connect server" << endl;
@@ -68,7 +68,7 @@ int main()
 
       cout << "connection terminated" << endl;
       cout << "goodbye" << endl;
-      close(client);
+      //close(client);
 
       return 0;
 }
