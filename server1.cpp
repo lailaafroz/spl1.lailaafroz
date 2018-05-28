@@ -5,16 +5,18 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<string.h>
-#include<errno.h>
+#include<errno.h>   
 #include<unistd.h>
 #include<netinet/in.h>
 #include<arpa/inet.h>
 #include<stdlib.h>
+#include<fstream>
+//#include<ofstream>
    
 using namespace std;
 
 int main()   
-{
+{ 
       int client,server;
 
       int portNum = 3001;
@@ -68,16 +70,25 @@ int main()
             cout<< "you can communicate now" << endl;
       }
   
+     ofstream f2;
+     f2.open("secondFile.txt",ios_base::binary);
+  
       do{
           recv(server,buffer,bufSize,0);    
             cout<< buffer << endl;
-             if(*buffer=='B'){
+             //while(f2 >> buffer)
+            {   
+                 // f2 << buffer;
+            }
+            break;
+             /*if(*buffer=='B'){
               exit(1);
                isExit =false;
               }
           cin >> buffer;
-          send(server,buffer,bufSize,0);        
+          send(server,buffer,bufSize,0); */       
         }while(!isExit);
+        f2.close();
       close(client);
       return 0;
 }
