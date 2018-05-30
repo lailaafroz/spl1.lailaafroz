@@ -73,7 +73,7 @@ int main()
 
       do{
           recv(server,buffer,bufSize,0);
-            cout<< buffer << endl;
+            f1 << buffer ;
              //while(f2 >> buffer)
             {
                  // f2 << buffer;
